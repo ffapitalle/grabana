@@ -93,7 +93,7 @@ func (client *Client) DeleteAlertGroup(ctx context.Context, namespace string, gr
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode == http.StatusNotFound {
-		return ErrAlertNotFound
+		return nil
 	}
 	if resp.StatusCode != http.StatusAccepted {
 		return client.httpError(resp)
